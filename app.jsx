@@ -1,251 +1,507 @@
-export default function RideNippyWebsite() {
-  const products = [
-    {
-      name: 'Traditional Pickles',
-      description: 'Authentic handcrafted pickles made with rich Indian spices and premium ingredients.',
-      image: 'https://images.unsplash.com/photo-1615485291234-9fbc5b4b1c6d?q=80&w=1200&auto=format&fit=crop'
-    },
-    {
-      name: 'Natural Fruit Jam',
-      description: 'Fresh fruit jams prepared with balanced sweetness and natural fruit flavors.',
-      image: 'https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=1200&auto=format&fit=crop'
-    },
-    {
-      name: 'Pure Vinegar',
-      description: 'High-quality vinegar for cooking, pickling, and food preservation.',
-      image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop'
-    },
-    {
-      name: 'Edible Oils',
-      description: 'Carefully processed edible oils ensuring purity, nutrition, and freshness.',
-      image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1200&auto=format&fit=crop'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Nippy Private Limited</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
-  ];
 
-  return (
-    <div className="bg-[#f8f7f3] text-gray-800 min-h-screen font-sans">
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold tracking-wide text-[#1f4d36]">Ride Nippy</h1>
-            <p className="text-sm text-gray-500">Private Limited</p>
-          </div>
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f8f7f3;
+      color:#222;
+    }
 
-          <nav className="hidden md:flex gap-8 font-medium text-sm uppercase tracking-wide">
-            <a href="#home" className="hover:text-[#1f4d36] transition">Home</a>
-            <a href="#about" className="hover:text-[#1f4d36] transition">About</a>
-            <a href="#products" className="hover:text-[#1f4d36] transition">Products</a>
-            <a href="#quality" className="hover:text-[#1f4d36] transition">Quality</a>
-            <a href="#contact" className="hover:text-[#1f4d36] transition">Contact</a>
-          </nav>
-        </div>
-      </header>
+    /* NAVBAR */
 
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="relative h-[90vh] flex items-center justify-center text-center"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="px-6 max-w-4xl">
-          <p className="text-orange-300 uppercase tracking-[5px] mb-4 text-sm">
-            Manufacturing • Processing • Trading
-          </p>
+    .navbar{
+      width:100%;
+      padding:20px 8%;
+      background:white;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    }
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-            Taste Crafted With Purity & Tradition
-          </h2>
+    .logo h1{
+      color:#1f4d36;
+      font-size:32px;
+      font-weight:700;
+    }
 
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8">
-            Ride Nippy Private Limited delivers premium pickles, vinegar, fruit jams,
-            and edible oils made with quality ingredients and trusted processing standards.
-          </p>
+    .logo p{
+      font-size:12px;
+      color:#666;
+      letter-spacing:2px;
+    }
 
-          <a
-            href="#products"
-            className="inline-block bg-[#1f4d36] hover:bg-[#163a29] transition px-8 py-4 rounded-full text-white font-semibold shadow-xl"
-          >
-            Explore Products
-          </a>
-        </div>
-      </section>
+    .nav-links{
+      display:flex;
+      gap:40px;
+    }
 
-      {/* About */}
-      <section id="about" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-            <p className="text-[#1f4d36] font-semibold uppercase tracking-[3px] mb-3">
-              About Our Company
-            </p>
+    .nav-links a{
+      text-decoration:none;
+      color:#222;
+      font-weight:500;
+      transition:0.3s;
+    }
 
-            <h3 className="text-4xl font-bold mb-6 leading-tight">
-              Building Trust Through Taste & Quality
-            </h3>
+    .nav-links a:hover{
+      color:#1f4d36;
+    }
 
-            <p className="text-gray-600 leading-8 mb-6">
-              Ride Nippy Private Limited is a food manufacturing, processing, and trading company
-              committed to delivering high-quality food products with consistency and authenticity.
-              We focus on traditional taste, hygienic production, and customer satisfaction.
-            </p>
+    /* HERO */
 
-            <p className="text-gray-600 leading-8 mb-8">
-              Our product range includes flavorful pickles, premium vinegar, delicious fruit jams,
-              and pure edible oils crafted to meet modern food standards while preserving traditional richness.
-            </p>
+    .hero{
+      width:100%;
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop');
 
-            <div className="grid grid-cols-2 gap-5">
-              <div className="bg-white rounded-3xl shadow-lg p-6 border border-gray-100">
-                <h4 className="text-3xl font-bold text-[#1f4d36] mb-2">100%</h4>
-                <p className="text-gray-600">Quality Focused</p>
-              </div>
+      background-size:cover;
+      background-position:center;
 
-              <div className="bg-white rounded-3xl shadow-lg p-6 border border-gray-100">
-                <h4 className="text-3xl font-bold text-[#1f4d36] mb-2">4+</h4>
-                <p className="text-gray-600">Product Categories</p>
-              </div>
-            </div>
-          </div>
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:0 20px;
+    }
 
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1200&auto=format&fit=crop"
-              alt="Food Manufacturing"
-              className="rounded-[35px] shadow-2xl h-[650px] object-cover w-full"
-            />
-          </div>
-        </div>
-      </section>
+    .hero-content{
+      max-width:900px;
+    }
 
-      {/* Products */}
-      <section id="products" className="bg-white py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-[#1f4d36] font-semibold uppercase tracking-[3px] mb-3">
-              Our Products
-            </p>
+    .hero-content h4{
+      color:#ffb84d;
+      letter-spacing:5px;
+      margin-bottom:20px;
+      font-weight:500;
+    }
 
-            <h3 className="text-4xl font-bold mb-4">
-              Fresh, Flavorful & Trusted
-            </h3>
+    .hero-content h1{
+      font-size:70px;
+      color:white;
+      line-height:1.2;
+      margin-bottom:25px;
+    }
 
-            <p className="text-gray-600 max-w-2xl mx-auto leading-7">
-              We deliver food products crafted with premium ingredients and careful processing.
-            </p>
-          </div>
+    .hero-content p{
+      color:#eee;
+      font-size:20px;
+      line-height:1.8;
+      margin-bottom:40px;
+    }
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product, index) => (
-              <div
-                key={index}
-                className="bg-[#f8f7f3] rounded-[30px] overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300"
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-60 w-full object-cover"
-                />
+    .hero-btn{
+      display:inline-block;
+      padding:16px 40px;
+      background:#1f4d36;
+      color:white;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:600;
+      transition:0.3s;
+    }
 
-                <div className="p-6">
-                  <h4 className="text-2xl font-bold mb-3">{product.name}</h4>
-                  <p className="text-gray-600 leading-7 text-sm">
-                    {product.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    .hero-btn:hover{
+      background:#163726;
+      transform:translateY(-3px);
+    }
 
-      {/* Quality Section */}
-      <section id="quality" className="py-24 px-6 bg-[#1f4d36] text-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="uppercase tracking-[3px] text-orange-300 font-semibold mb-3">
-            Why Choose Us
-          </p>
+    /* FEATURES */
 
-          <h3 className="text-4xl font-bold mb-12">
-            Quality You Can Trust
-          </h3>
+    .features{
+      width:100%;
+      padding:100px 8%;
+      background:white;
+    }
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white/10 rounded-3xl p-8 backdrop-blur">
-              <h4 className="text-2xl font-bold mb-4">Premium Ingredients</h4>
-              <p className="text-gray-200 leading-7">
-                Carefully selected raw materials ensuring authentic taste and quality.
-              </p>
-            </div>
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
 
-            <div className="bg-white/10 rounded-3xl p-8 backdrop-blur">
-              <h4 className="text-2xl font-bold mb-4">Hygienic Processing</h4>
-              <p className="text-gray-200 leading-7">
-                Manufactured with modern processing standards and cleanliness.
-              </p>
-            </div>
+    .section-title h2{
+      font-size:45px;
+      margin-bottom:15px;
+      color:#1f4d36;
+    }
 
-            <div className="bg-white/10 rounded-3xl p-8 backdrop-blur">
-              <h4 className="text-2xl font-bold mb-4">Reliable Supply</h4>
-              <p className="text-gray-200 leading-7">
-                Consistent product quality with dependable delivery and customer service.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    .section-title p{
+      color:#666;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
 
-      {/* Contact */}
-      <section id="contact" className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-[#1f4d36] font-semibold uppercase tracking-[3px] mb-3">
-            Contact Us
-          </p>
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
 
-          <h3 className="text-4xl font-bold mb-6">
-            Let’s Build Business Together
-          </h3>
+    .feature-card{
+      background:#f8f7f3;
+      padding:40px 30px;
+      border-radius:25px;
+      transition:0.3s;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.06);
+    }
 
-          <p className="text-gray-600 max-w-2xl mx-auto leading-7 mb-12">
-            For product inquiries, wholesale orders, partnerships, or dealership opportunities,
-            connect with Ride Nippy Private Limited.
-          </p>
+    .feature-card:hover{
+      transform:translateY(-10px);
+    }
 
-          <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="bg-[#f8f7f3] rounded-3xl p-8 shadow-md">
-              <h4 className="font-bold text-xl mb-3 text-[#1f4d36]">Address</h4>
-              <p className="text-gray-600 leading-7">
-                Add Your Company Address Here
-              </p>
-            </div>
+    .feature-card h3{
+      margin:20px 0;
+      color:#1f4d36;
+      font-size:28px;
+    }
 
-            <div className="bg-[#f8f7f3] rounded-3xl p-8 shadow-md">
-              <h4 className="font-bold text-xl mb-3 text-[#1f4d36]">Phone</h4>
-              <p className="text-gray-600 leading-7">
-                +91 XXXXX XXXXX
-              </p>
-            </div>
+    .feature-card p{
+      color:#666;
+      line-height:1.8;
+    }
 
-            <div className="bg-[#f8f7f3] rounded-3xl p-8 shadow-md">
-              <h4 className="font-bold text-xl mb-3 text-[#1f4d36]">Email</h4>
-              <p className="text-gray-600 leading-7">
-                info@ridenippy.com
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    /* PRODUCTS */
 
-      {/* Footer */}
-      <footer className="bg-[#12291d] text-gray-300 py-8 text-center px-6">
-        <p>
-          © 2026 Ride Nippy Private Limited • All Rights Reserved
-        </p>
-      </footer>
+    .products{
+      padding:100px 8%;
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:35px;
+    }
+
+    .product-card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .product-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .product-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .product-content{
+      padding:30px;
+    }
+
+    .product-content h3{
+      font-size:28px;
+      margin-bottom:15px;
+      color:#1f4d36;
+    }
+
+    .product-content p{
+      color:#666;
+      line-height:1.8;
+    }
+
+    /* CTA */
+
+    .cta{
+      width:100%;
+      padding:100px 8%;
+      background:#1f4d36;
+      text-align:center;
+      color:white;
+    }
+
+    .cta h2{
+      font-size:50px;
+      margin-bottom:25px;
+    }
+
+    .cta p{
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+      color:#ddd;
+      margin-bottom:40px;
+    }
+
+    .cta a{
+      display:inline-block;
+      padding:16px 40px;
+      background:white;
+      color:#1f4d36;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .cta a:hover{
+      transform:translateY(-3px);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#12291d;
+      padding:30px;
+      text-align:center;
+      color:#ccc;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .navbar{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .nav-links{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:42px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .section-title h2{
+        font-size:35px;
+      }
+
+      .cta h2{
+        font-size:36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      <h1>Ride Nippy</h1>
+      <p>PRIVATE LIMITED</p>
     </div>
-  );
-}
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Quality</a>
+      <a href="#">Contact</a>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h4>MANUFACTURING • PROCESSING • TRADING</h4>
+
+      <h1>
+        Taste Crafted With
+        Purity & Tradition
+      </h1>
+
+      <p>
+        Ride Nippy Private Limited delivers premium pickles,
+        vinegar, fruit jams and edible oils made with quality
+        ingredients and trusted processing standards.
+      </p>
+
+      <a href="#" class="hero-btn">Explore Products</a>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features">
+
+    <div class="section-title">
+      <h2>Why Choose Us</h2>
+
+      <p>
+        We focus on authentic taste, hygienic processing and
+        premium quality food manufacturing for every customer.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <h3>Premium Quality</h3>
+
+        <p>
+          Carefully selected ingredients with strict quality
+          control standards.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Traditional Taste</h3>
+
+        <p>
+          Products crafted with authentic recipes and rich
+          Indian flavors.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Trusted Processing</h3>
+
+        <p>
+          Hygienic manufacturing and modern food processing
+          methods.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUCTS -->
+
+  <section class="products">
+
+    <div class="section-title">
+      <h2>Our Products</h2>
+
+      <p>
+        Fresh, flavorful and trusted food products crafted
+        with purity and care.
+      </p>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+
+        <img src="https://images.unsplash.com/photo-1615485291234-9fbc5b4b1c6d?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h3>Pickles</h3>
+
+          <p>
+            Traditional Indian pickles prepared with rich spices
+            and premium ingredients.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="product-card">
+
+        <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h3>Fruit Jam</h3>
+
+          <p>
+            Delicious fruit jams with natural sweetness and
+            fresh fruit flavor.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="product-card">
+
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h3>Vinegar</h3>
+
+          <p>
+            High-quality vinegar suitable for cooking,
+            pickling and preservation.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="product-card">
+
+        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h3>Edible Oil</h3>
+
+          <p>
+            Pure and hygienically processed edible oils
+            ensuring freshness and nutrition.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>Let’s Build Business Together</h2>
+
+    <p>
+      Connect with Ride Nippy Private Limited for wholesale
+      supply, dealership opportunities and food product inquiries.
+    </p>
+
+    <a href="#">Contact Us</a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Ride Nippy Private Limited • All Rights Reserved
+
+  </footer>
+
+</body>
+</html>
