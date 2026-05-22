@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ride Nippy Private Limited</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f8f7f3;
+      color:#222;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid #eee;
+    }
+
+    .navbar{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo h1{
+      color:#1f4d36;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    .logo p{
+      color:#777;
+      font-size:13px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:40px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#222;
+      font-size:14px;
+      font-weight:500;
+      text-transform:uppercase;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#1f4d36;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content{
+      max-width:900px;
+      color:white;
+    }
+
+    .hero-content span{
+      color:#ffcc80;
+      letter-spacing:4px;
+      font-size:14px;
+      text-transform:uppercase;
+    }
+
+    .hero-content h2{
+      font-size:70px;
+      line-height:1.2;
+      margin:25px 0;
+      font-weight:800;
+    }
+
+    .hero-content p{
+      font-size:18px;
+      line-height:1.8;
+      color:#ddd;
+      margin-bottom:40px;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      background:#1f4d36;
+      color:white;
+      padding:16px 40px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .hero-btn:hover{
+      background:#143323;
+      transform:translateY(-3px);
+    }
+
+    /* FEATURES */
+
+    .features{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title span{
+      color:#1f4d36;
+      font-weight:600;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      font-size:14px;
+    }
+
+    .section-title h3{
+      font-size:45px;
+      margin-top:15px;
+      color:#222;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.4s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .feature-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .feature-content{
+      padding:30px;
+    }
+
+    .feature-content h4{
+      font-size:24px;
+      margin-bottom:15px;
+      color:#1f4d36;
+    }
+
+    .feature-content p{
+      color:#666;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:#1f4d36;
+      color:white;
+      padding:100px 0;
+    }
+
+    .about-container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:60px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:30px;
+      height:500px;
+      object-fit:cover;
+    }
+
+    .about-text span{
+      color:#ffcc80;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .about-text h3{
+      font-size:48px;
+      margin:20px 0;
+      line-height:1.3;
+    }
+
+    .about-text p{
+      color:#ddd;
+      line-height:2;
+      margin-bottom:20px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      padding:100px 0;
+      text-align:center;
+    }
+
+    .contact h3{
+      font-size:45px;
+      margin-bottom:20px;
+    }
+
+    .contact p{
+      color:#666;
+      margin-bottom:50px;
+    }
+
+    .contact-box{
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .contact-card{
+      background:white;
+      padding:40px;
+      border-radius:25px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .contact-card h4{
+      color:#1f4d36;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .contact-card p{
+      color:#666;
+      line-height:1.8;
+      margin:0;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#12291d;
+      color:#ccc;
+      text-align:center;
+      padding:25px;
+      font-size:14px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero-content h2{
+        font-size:42px;
+      }
+
+      .section-title h3,
+      .about-text h3,
+      .contact h3{
+        font-size:34px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="navbar">
+
+      <div class="logo">
+        <h1>Ride Nippy</h1>
+        <p>Private Limited</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Products</a>
+        <a href="#">Quality</a>
+        <a href="#">Contact</a>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <span>Manufacturing • Processing • Trading</span>
+
+      <h2>
+        Premium Taste With
+        Traditional Quality
+      </h2>
+
+      <p>
+        Ride Nippy Private Limited manufactures and delivers premium
+        pickles, fruit jams, vinegar, and edible oils with trusted
+        quality and authentic flavor.
+      </p>
+
+      <a href="#" class="hero-btn">
+        Explore Products
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUCTS -->
+
+  <section class="features">
+
+    <div class="section-title">
+      <span>Our Products</span>
+      <h3>Fresh, Pure & Delicious</h3>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+
+        <img src="https://images.unsplash.com/photo-1615485291234-9fbc5b4b1c6d?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="feature-content">
+          <h4>Traditional Pickles</h4>
+
+          <p>
+            Authentic Indian pickles made with premium spices
+            and traditional recipes.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="feature-card">
+
+        <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="feature-content">
+          <h4>Fruit Jam</h4>
+
+          <p>
+            Delicious fruit jams prepared with balanced sweetness
+            and rich fruit flavor.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="feature-card">
+
+        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="feature-content">
+          <h4>Edible Oils</h4>
+
+          <p>
+            Carefully processed edible oils ensuring freshness,
+            purity and nutrition.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="about">
+
+    <div class="about-container">
+
+      <div>
+        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1200&auto=format&fit=crop">
+      </div>
+
+      <div class="about-text">
+
+        <span>About Company</span>
+
+        <h3>
+          Trusted Food Manufacturing Company
+        </h3>
+
+        <p>
+          Ride Nippy Private Limited is a food manufacturing,
+          processing and trading company focused on delivering
+          high-quality food products with consistency and trust.
+        </p>
+
+        <p>
+          We combine traditional taste with hygienic processing
+          methods to serve customers with premium quality products.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact">
+
+    <div class="section-title">
+      <span>Contact Us</span>
+      <h3>Let's Grow Together</h3>
+    </div>
+
+    <p>
+      Contact us for dealership, wholesale supply,
+      partnerships and product inquiries.
+    </p>
+
+    <div class="contact-box">
+
+      <div class="contact-card">
+
+        <h4>Address</h4>
+
+        <p>
+          Add Your Company Address Here
+        </p>
+
+      </div>
+
+      <div class="contact-card">
+
+        <h4>Phone</h4>
+
+        <p>
+          +91 XXXXX XXXXX
+        </p>
+
+      </div>
+
+      <div class="contact-card">
+
+        <h4>Email</h4>
+
+        <p>
+          info@ridenippy.com
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Ride Nippy Private Limited • All Rights Reserved
+
+  </footer>
+
+</body>
+</html>
