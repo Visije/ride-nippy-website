@@ -232,51 +232,51 @@ body{
         flex-wrap:wrap;
         justify-content:center;
       }
-
-      .hero-content h1{
-        font-size:42px;
-      }
-
-      .hero-content p{
-        font-size:16px;
-      }
-
-      .section-title h2{
-        font-size:35px;
-      }
       .hero{
-    height:90vh;
-    background:url('banner.jpg') center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    position:relative;
+    height: 100vh;
+    background: url("../Ride.png") center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 80px;
+    position: relative;
 }
 
 .hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.5);
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
 }
 
 .hero-content{
-    position:relative;
-    z-index:1;
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+}
+
+.hero-content h1{
+    font-size: 56px;
+    font-weight: 800;
+    color: #123d1f;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.hero-content p{
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 25px;
 }
 
 .btn{
-    display:inline-block;
-    padding:12px 25px;
-    background:#2e7d32;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
+    display: inline-block;
+    padding: 14px 32px;
+    background: #1f5c2e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
 }
 
-      .cta h2{
-        font-size:36px;
-      }
-    }
+     
