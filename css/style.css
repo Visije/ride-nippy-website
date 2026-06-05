@@ -244,6 +244,37 @@ body{
       .section-title h2{
         font-size:35px;
       }
+      .hero{
+    height:90vh;
+    background:url('banner.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#2e7d32;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
 
       .cta h2{
         font-size:36px;
