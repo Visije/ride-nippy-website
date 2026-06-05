@@ -232,14 +232,13 @@ body{
         flex-wrap:wrap;
         justify-content:center;
       }
-      .hero{
+      
+.hero{
     height: 100vh;
-    background: url("../Ride.png") center center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 80px;
-    position: relative;
+    background-image: url("../Ride.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero::before{
