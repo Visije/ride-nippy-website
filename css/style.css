@@ -1,1 +1,18 @@
+.logo img{
+    height:70px;
+    width:auto;
+    display:block;
+}
+.logo img{
+    height:90px;
+    width:auto;
+    transition:0.3s;
+}
 
+.logo img:hover{
+    transform:scale(1.05);
+}
+.hero-logo{
+    width:220px;
+    margin-bottom:25px;
+}
