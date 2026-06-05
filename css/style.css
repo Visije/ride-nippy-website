@@ -274,6 +274,106 @@ body{
     background: #1f5c2e;
     color: #fff;
     text-decoration: none;
+
+  .hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:90vh;
+    padding:60px 8%;
+    background:#f7f2e7;
+    overflow:hidden;
+}
+
+.hero-content{
+    width:45%;
+}
+
+.hero-content h1{
+    font-size:80px;
+    line-height:1;
+    color:#1d4d2f;
+    margin:20px 0;
+}
+
+.tagline{
+    color:#35623f;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+.hero-content p{
+    font-size:22px;
+    line-height:1.8;
+    color:#444;
+    margin-bottom:35px;
+}
+
+.btn{
+    background:#1d4d2f;
+    color:white;
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+}
+
+.hero-products{
+    width:55%;
+    position:relative;
+    height:700px;
+}
+
+.vinegar{
+    position:absolute;
+    top:40px;
+    right:320px;
+    height:420px;
+}
+
+.oil{
+    position:absolute;
+    top:0;
+    right:140px;
+    height:500px;
+}
+
+.pickle1{
+    position:absolute;
+    bottom:60px;
+    right:350px;
+    height:280px;
+}
+
+.pickle2{
+    position:absolute;
+    bottom:40px;
+    right:180px;
+    height:280px;
+}
+
+.jam{
+    position:absolute;
+    bottom:50px;
+    right:0;
+    height:260px;
+}
+
+.quality-badge{
+    position:absolute;
+    right:-10px;
+    top:230px;
+    width:140px;
+    height:140px;
+    border:3px solid #8d9a55;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-weight:700;
+    color:#556b2f;
+    background:#f7f2e7;
+}
     border-radius: 50px;
     font-weight: 600;
 }
