@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-labelledby="title desc">
+  <title id="title">Ride Nippy logo</title>
+  <desc id="desc">Modern food brand logo with an abstract leaf and bowl symbol beside the Ride Nippy wordmark.</desc>
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#78945A"/>
+      <stop offset="1" stop-color="#315B3D"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(22 18)">
+    <rect x="4" y="4" width="180" height="180" rx="42" fill="#183D2B"/>
+    <path d="M39 111 C59 146 129 146 150 111" fill="none" stroke="#F7F4E9" stroke-width="9" stroke-linecap="round"/>
+    <path d="M49 111 H140" fill="none" stroke="#D8B66A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M91 104 C52 83 63 40 126 34 C133 77 119 98 91 104Z" fill="url(#leaf)" stroke="#F7F4E9" stroke-width="3"/>
+    <path d="M83 94 C96 77 108 62 124 43" fill="none" stroke="#F7F4E9" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="58" cy="75" r="5" fill="#D8B66A"/>
+  </g>
+  <g transform="translate(232 0)">
+    <text x="0" y="104" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="800" letter-spacing="-2.5" fill="#183D2B">RIDE</text>
+    <text x="0" y="166" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="800" letter-spacing="-2.5" fill="#78945A">NIPPY</text>
+    <path d="M3 187 H390" stroke="#D8B66A" stroke-width="4" stroke-linecap="round"/>
+    <text x="4" y="211" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" letter-spacing="4" fill="#526052">FOOD • FLAVOUR • EVERYDAY</text>
+  </g>
+</svg>
