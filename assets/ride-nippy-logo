@@ -1,1 +1,6 @@
-
+<a href="index.html" class="brand">
+    <img 
+        src="assets/ride-nippy-logo.svg" 
+        alt="Ride Nippy Private Limited Logo"
+    >
+</a>
