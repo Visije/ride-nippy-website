@@ -37,7 +37,7 @@ img { display: block; max-width: 100%; }
 .menu-toggle span { display: block; width: 23px; height: 2px; margin: 5px; background: var(--green); }
 .hero { min-height: 650px; height: min(760px, calc(100vh - 118px)); position: relative; display: flex; align-items: center; overflow: hidden; background: #263c2d; color: white; }
 .hero-image, .hero-shade { position: absolute; inset: 0; }
-.hero-image { background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=2200&q=90") center 52% / cover; transform: scale(1.02); animation: heroReveal 1.2s ease both; }
+.hero-image { background: url("https://images.unsplash.com/photo-1765691566596-4f73e96f9408?auto=format&fit=crop&w=2200&q=90") center 52% / cover; transform: scale(1.02); animation: heroReveal 1.2s ease both; }
 .hero-shade { background: linear-gradient(90deg, rgba(12,32,21,.84) 0%, rgba(12,32,21,.65) 48%, rgba(12,32,21,.18) 100%); }
 .hero-content { position: relative; z-index: 1; padding-top: 35px; }
 .eyebrow { margin: 0 0 19px; color: var(--olive); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
@@ -188,14 +188,30 @@ h2 em { color: var(--olive); }
   right: 8%; top: 14%; border: 1px solid rgba(255,255,255,.13); border-radius: 50%;
   transform: rotateX(64deg) rotate(-24deg); animation: orbitSpin 34s linear infinite;
 }
-.motion-seed { position: absolute; display: block; width: var(--size, 13px); height: calc(var(--size, 13px) * 1.9);
-  left: var(--x); top: var(--y); opacity: 0; border-radius: 80% 12% 80% 12%;
-  background: linear-gradient(145deg, #e7c77f 0%, #9b713b 55%, #536b3e 100%);
-  box-shadow: 0 5px 18px rgba(0,0,0,.18); transform: rotate(var(--rotate, 25deg));
+ .motion-seed {
+  position: absolute;
+  display: block;
+  width: var(--size, 7px);
+  height: calc(var(--size, 7px) * 1.18);
+  left: var(--x);
+  top: var(--y);
+  opacity: 0;
+  border-radius: 48% 52% 46% 54%;
+  background: radial-gradient(ellipse at 32% 25%, #f8df91 0%, #d5a53f 48%, #95651f 100%);
+  border: 1px solid rgba(255, 226, 151, .45);
+  box-shadow: 0 3px 10px rgba(0,0,0,.22), inset 0 1px 2px rgba(255,255,255,.35);
+  transform: rotate(var(--rotate, 25deg));
   animation: seedDrift var(--duration, 9s) ease-in-out var(--delay, 0s) infinite;
 }
-.motion-seed:nth-child(3n) { border-radius: 50%; background: radial-gradient(circle at 32% 28%, #e7c77f, #a8793e 70%); }
-.motion-seed:nth-child(4n) { width: calc(var(--size, 13px) * .72); height: calc(var(--size, 13px) * 1.45); background: linear-gradient(145deg,#9eae70,#405b37); }
+.motion-seed:nth-child(3n) {
+  width: calc(var(--size, 7px) * .82);
+  height: calc(var(--size, 7px) * .82);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #f7df9c, #c18b2d 72%);
+}
+.motion-seed:nth-child(4n) {
+  background: radial-gradient(ellipse at 32% 25%, #f2d17b, #b47a27 75%);
+}
 .hero-content .eyebrow, .hero-content h1, .hero-content .hero-description, .hero-content .hero-actions, .hero-content .hero-note {
   animation: contentRise .85s cubic-bezier(.2,.7,.2,1) both;
 }
@@ -251,3 +267,35 @@ h2 em { color: var(--olive); }
   .js-motion [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
+
+/* Mustard identity: seeds, golden oil and field-inspired accents */
+.category-card img[src$="mustard-oil-illustration.svg"] {
+  object-fit: cover;
+  object-position: center;
+  background: #e9dfbd;
+}
+
+.category-card:has(img[src$="mustard-oil-illustration.svg"])::after {
+  background: linear-gradient(180deg, rgba(34, 43, 23, .04) 10%, rgba(31, 39, 22, .72) 100%);
+}
+
+.hero-image {
+  background-position: center 52%;
+  background-size: cover;
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(12, 32, 21, .82) 0%, rgba(12, 32, 21, .56) 48%, rgba(12, 32, 21, .16) 100%),
+    linear-gradient(0deg, rgba(12, 32, 21, .18), transparent 45%);
+}
+
+@media (max-width: 700px) {
+  .hero-image {
+    background-position: 58% center;
+  }
+  .hero-shade {
+    background: linear-gradient(90deg, rgba(12, 32, 21, .86), rgba(12, 32, 21, .48));
+  }
+}
