@@ -162,15 +162,92 @@ h2 em { color: var(--olive); }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+
+/* -------------------------------------------------------
+   RIDE NIPPY — cinematic motion layer
+   Lightweight CSS/JS motion; no animation library required.
+-------------------------------------------------------- */
+.brand { display: inline-flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+.brand img { display: block; width: 190px; height: auto; max-height: 62px; object-fit: contain; }
+.footer-brand .brand img { width: 190px; max-height: 66px; }
+
+.hero { isolation: isolate; }
+.hero-image { will-change: transform; transform-origin: center; }
+.hero-shade { z-index: 0; }
+.hero-content { z-index: 3; }
+.hero-index { z-index: 3; }
+.hero-motion { position: absolute; z-index: 2; inset: 0; overflow: hidden; pointer-events: none; perspective: 900px; }
+.hero-motion::before {
+  content: ""; position: absolute; width: min(44vw, 590px); aspect-ratio: 1;
+  right: 3%; top: 8%; border: 1px solid rgba(230,196,127,.22); border-radius: 50%;
+  box-shadow: 0 0 0 42px rgba(230,196,127,.035), 0 0 0 84px rgba(230,196,127,.025);
+  animation: orbitBreath 9s ease-in-out infinite alternate;
+}
+.hero-motion::after {
+  content: ""; position: absolute; width: min(34vw, 440px); aspect-ratio: 1;
+  right: 8%; top: 14%; border: 1px solid rgba(255,255,255,.13); border-radius: 50%;
+  transform: rotateX(64deg) rotate(-24deg); animation: orbitSpin 34s linear infinite;
+}
+.motion-seed { position: absolute; display: block; width: var(--size, 13px); height: calc(var(--size, 13px) * 1.9);
+  left: var(--x); top: var(--y); opacity: 0; border-radius: 80% 12% 80% 12%;
+  background: linear-gradient(145deg, #e7c77f 0%, #9b713b 55%, #536b3e 100%);
+  box-shadow: 0 5px 18px rgba(0,0,0,.18); transform: rotate(var(--rotate, 25deg));
+  animation: seedDrift var(--duration, 9s) ease-in-out var(--delay, 0s) infinite;
+}
+.motion-seed:nth-child(3n) { border-radius: 50%; background: radial-gradient(circle at 32% 28%, #e7c77f, #a8793e 70%); }
+.motion-seed:nth-child(4n) { width: calc(var(--size, 13px) * .72); height: calc(var(--size, 13px) * 1.45); background: linear-gradient(145deg,#9eae70,#405b37); }
+.hero-content .eyebrow, .hero-content h1, .hero-content .hero-description, .hero-content .hero-actions, .hero-content .hero-note {
+  animation: contentRise .85s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-content h1 { animation-delay: .12s; }
+.hero-content .hero-description { animation-delay: .22s; }
+.hero-content .hero-actions { animation-delay: .32s; }
+.hero-content .hero-note { animation-delay: .45s; }
+
+/* Scroll reveal: elements remain visible if JS is unavailable. */
+.js-motion [data-reveal] { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.js-motion [data-reveal].is-visible { opacity: 1; transform: none; }
+.js-motion [data-reveal-delay="1"] { transition-delay: .10s; }
+.js-motion [data-reveal-delay="2"] { transition-delay: .20s; }
+.js-motion [data-reveal-delay="3"] { transition-delay: .30s; }
+.category-card { transform: translateZ(0); }
+.category-card img { will-change: transform; }
+.category-card::before { content: ""; position: absolute; z-index: 1; inset: 0; opacity: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.2) 48%, transparent 70%);
+  transform: translateX(-120%); transition: transform .8s ease, opacity .3s ease; }
+.category-card:hover::before { opacity: 1; transform: translateX(120%); }
+.button { position: relative; overflow: hidden; }
+.button::after { content: ""; position: absolute; top: -40%; left: -70%; width: 45%; height: 180%;
+  background: rgba(255,255,255,.24); transform: rotate(22deg); transition: left .55s ease; }
+.button:hover::after { left: 135%; }
+
+@keyframes contentRise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes seedDrift {
+  0% { opacity: 0; translate: 0 28px; rotate: -18deg; }
+  18% { opacity: .78; }
+  50% { translate: 20px -32px; rotate: 18deg; }
+  82% { opacity: .65; }
+  100% { opacity: 0; translate: -10px -82px; rotate: 42deg; }
+}
+@keyframes orbitBreath { from { transform: scale(.94) rotate(-8deg); opacity: .55; } to { transform: scale(1.05) rotate(8deg); opacity: 1; } }
+@keyframes orbitSpin { to { transform: rotateX(64deg) rotate(336deg); } }
+
+@media (max-width: 900px) {
+  .hero-motion::before { width: 55vw; right: -5%; top: 18%; }
+  .hero-motion::after { width: 46vw; right: -2%; top: 22%; }
+}
+@media (max-width: 700px) {
+  .brand img { width: 155px; max-height: 54px; }
+  .footer-brand .brand img { width: 165px; }
+  .hero-motion::before { width: 78vw; right: -28%; top: 20%; }
+  .hero-motion::after { width: 65vw; right: -20%; top: 25%; }
+  .motion-seed { opacity: .55; }
+  .hero-content { z-index: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-motion::before, .hero-motion::after, .motion-seed,
+  .hero-content .eyebrow, .hero-content h1, .hero-content .hero-description,
+  .hero-content .hero-actions, .hero-content .hero-note { animation: none !important; }
+  .js-motion [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
-.brand img {
-    width: 190px;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
