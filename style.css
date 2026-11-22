@@ -48,8 +48,20 @@ h1 em, h2 em { color: var(--olive); font-weight: 500; }
 .announcement a span { color: var(--gold); padding-left: 8px; }
 .site-header { position: sticky; z-index: 100; top: 0; background: rgba(252,251,247,.94); border-bottom: 1px solid rgba(24,61,43,.08); backdrop-filter: blur(14px); }
 .nav-wrap { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 35px; }
-.brand { display: inline-flex; align-items: center; flex-shrink: 0; }
-.brand img { width: 190px; height: auto; }
+/* Shared Ride Nippy logo — used by every page header and footer */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand img {
+  display: block;
+  width: 190px;
+  height: auto;
+  object-fit: contain;
+}
 .main-nav { display: flex; align-items: center; gap: clamp(15px, 2.1vw, 30px); }
 .main-nav > a { position: relative; color: #3d493e; font-size: 10px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: color .25s ease; }
 .main-nav > a:not(.nav-cta)::after { position: absolute; right: 0; bottom: -8px; left: 0; height: 1px; content: ""; background: var(--olive); transform: scaleX(0); transform-origin: right; transition: transform .3s ease; }
