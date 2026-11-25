@@ -3,197 +3,927 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore Ride Nippy Private Limited's food product categories: pickles, vinegar, fruit jam, edible oils, nuts, spices, lentils and pulses.">
+  <meta name="description" content="Explore Ride Nippy Private Limited's food product categories, including pickles, vinegar, fruit jam, edible oils, nuts, spices, lentils and pulses.">
   <meta name="theme-color" content="#183d2b">
+
   <title>Ride Nippy Private Limited | Food Products & Bulk Enquiries</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pages.css">
 
-  <!-- GSAP Animation Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
+
+  <style>
+    /* =========================================
+       HERO SECTION - PACKAGING SHOWCASE
+    ========================================= */
+
+    .hero.packaging-hero {
+      min-height: 650px;
+      height: auto;
+      padding: 74px max(6.5%, calc((100vw - 1240px) / 2));
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 76px);
+      overflow: hidden;
+      isolation: isolate;
+      background: #183d2b;
+      color: #fbf8ee;
+    }
+
+    .packaging-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(
+          ellipse at 78% 45%,
+          rgba(190,160,91,.19),
+          transparent 42%
+        ),
+        linear-gradient(
+          115deg,
+          #183d2b 0%,
+          #1c422f 58%,
+          #102b20 100%
+        );
+    }
+
+    .packaging-hero .hero-content {
+      max-width: 570px;
+      z-index: 2;
+    }
+
+    .packaging-hero .eyebrow {
+      color: #d8bd7d;
+    }
+
+    .packaging-hero h1 {
+      max-width: 590px;
+      margin: 0 0 22px;
+      font: 500 clamp(45px, 5.3vw, 76px)/1.04 var(--serif, Georgia, serif);
+      letter-spacing: -.045em;
+    }
+
+    .packaging-hero h1 em {
+      color: #dfbd75;
+      font-weight: 500;
+    }
+
+    .packaging-hero .hero-description {
+      max-width: 430px;
+      margin: 0;
+      color: #d9e0d5;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .packaging-hero .hero-actions {
+      margin-top: 30px;
+    }
+
+    .packaging-hero .text-link {
+      color: #f5f0e4;
+      border-color: #c5a45d;
+    }
+
+    .packaging-hero .hero-note {
+      margin-top: 48px;
+      color: #cbd4c8;
+    }
+
+
+    /* =========================================
+       PACKAGING DISPLAY STAGE
+    ========================================= */
+
+    .packaging-stage {
+      position: relative;
+      min-height: 455px;
+      width: 100%;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      padding: 25px 12px 35px;
+      perspective: 1000px;
+    }
+
+    .packaging-stage::before {
+      content: "";
+      position: absolute;
+      width: 92%;
+      height: 72%;
+      left: 4%;
+      bottom: 9%;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse,
+        rgba(218,184,111,.20),
+        rgba(218,184,111,0) 68%
+      );
+      filter: blur(14px);
+    }
+
+    .display-plinth {
+      position: absolute;
+      left: 2%;
+      right: 2%;
+      bottom: 23px;
+      height: 82px;
+      border-radius: 50%;
+
+      background: linear-gradient(
+        180deg,
+        #d9c9a6,
+        #9b8a67 70%,
+        #75674f
+      );
+
+      box-shadow:
+        0 25px 35px rgba(0,0,0,.28),
+        inset 0 7px 10px rgba(255,255,255,.34);
+
+      transform: rotateX(58deg);
+    }
+
+
+    /* =========================================
+       COMMON PACKAGE STYLES
+    ========================================= */
+
+    .package {
+      position: relative;
+      z-index: 1;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 17px 12px rgba(0,0,0,.27));
+      transform-style: preserve-3d;
+    }
+
+    .package-label {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 35%;
+      min-height: 31%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 5px 3px;
+      text-align: center;
+      color: #183d2b;
+
+      background: linear-gradient(
+        135deg,
+        #f6f0df,
+        #e6dcc2
+      );
+
+      border: 1px solid rgba(91,79,48,.22);
+      box-shadow: 0 2px 5px rgba(0,0,0,.1);
+      line-height: 1.05;
+    }
+
+    .package-label b {
+      font: 700 clamp(7px, .75vw, 10px)/1.1 var(--sans, Arial, sans-serif);
+      letter-spacing: .09em;
+    }
+
+    .package-label small {
+      margin-top: 4px;
+      font: 6px/1.2 var(--sans, Arial, sans-serif);
+      letter-spacing: .12em;
+    }
+
+
+    /* =========================================
+       PICKLE AND JAM JARS
+    ========================================= */
+
+    .jar {
+      width: clamp(82px, 10vw, 132px);
+      height: 178px;
+      margin: 0 -5px 35px;
+
+      border-radius: 18px 18px 22px 22px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.35),
+          transparent 22%,
+          rgba(255,255,255,.1) 65%,
+          rgba(0,0,0,.18)
+        ),
+        linear-gradient(
+          180deg,
+          #d6a34a 0%,
+          #a64f26 100%
+        );
+
+      border: 2px solid rgba(245,229,190,.65);
+    }
+
+    .jar::before {
+      content: "";
+      position: absolute;
+      width: 72%;
+      height: 18px;
+      top: -18px;
+      left: 14%;
+
+      border-radius: 5px 5px 2px 2px;
+
+      background: repeating-linear-gradient(
+        90deg,
+        #c4b28a 0 4px,
+        #887b5d 4px 6px
+      );
+
+      border: 1px solid #71684e;
+    }
+
+    .jar::after {
+      content: "";
+      position: absolute;
+      width: 42%;
+      height: 9px;
+      top: -25px;
+      left: 29%;
+
+      border-radius: 3px 3px 0 0;
+      background: #b7a47a;
+    }
+
+    .jar.pickle {
+      height: 196px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.4),
+          transparent 24%,
+          rgba(0,0,0,.15)
+        ),
+        linear-gradient(
+          180deg,
+          #9b9b39,
+          #53672e
+        );
+    }
+
+    .jar.jam {
+      height: 164px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.35),
+          transparent 25%,
+          rgba(0,0,0,.15)
+        ),
+        linear-gradient(
+          180deg,
+          #b94d3d,
+          #762c2b
+        );
+    }
+
+
+    /* =========================================
+       EDIBLE OIL BOTTLE
+    ========================================= */
+
+    .bottle {
+      width: clamp(74px, 8vw, 104px);
+      height: 250px;
+      margin: 0 -3px 37px;
+
+      border-radius: 17px 17px 14px 14px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.42),
+          transparent 25%,
+          rgba(0,0,0,.18)
+        ),
+        linear-gradient(
+          180deg,
+          #b7a34b,
+          #6e742c
+        );
+
+      border: 2px solid rgba(240,225,170,.65);
+
+      clip-path: polygon(
+        20% 0,
+        80% 0,
+        80% 12%,
+        96% 21%,
+        100% 100%,
+        0 100%,
+        4% 21%,
+        20% 12%
+      );
+    }
+
+    .bottle::before {
+      content: "";
+      position: absolute;
+      width: 35%;
+      height: 23px;
+      top: -17px;
+      left: 32%;
+
+      background: #d5c28a;
+      border-radius: 4px 4px 1px 1px;
+      border: 1px solid #7e754f;
+    }
+
+
+    /* =========================================
+       RETAIL POUCHES
+    ========================================= */
+
+    .pouch {
+      width: clamp(95px, 11vw, 142px);
+      height: 205px;
+      margin: 0 -4px 35px;
+
+      border-radius: 8px 8px 16px 16px;
+
+      background:
+        linear-gradient(
+          110deg,
+          rgba(255,255,255,.18),
+          transparent 30%,
+          rgba(0,0,0,.13)
+        ),
+        linear-gradient(
+          145deg,
+          #d9c59a,
+          #9c8052
+        );
+
+      clip-path: polygon(
+        4% 0,
+        96% 0,
+        100% 94%,
+        88% 100%,
+        12% 100%,
+        0 94%
+      );
+    }
+
+    .pouch::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 9%;
+      right: 9%;
+      height: 4px;
+
+      border-top: 1px solid rgba(63,54,35,.45);
+      border-bottom: 1px solid rgba(255,255,255,.35);
+    }
+
+    .pouch .package-label {
+      top: 31%;
+      min-height: 38%;
+    }
+
+    .pouch.pulses {
+      background:
+        linear-gradient(
+          110deg,
+          rgba(255,255,255,.2),
+          transparent 30%,
+          rgba(0,0,0,.12)
+        ),
+        linear-gradient(
+          145deg,
+          #b7a16c,
+          #6d6844
+        );
+    }
+
+
+    /* =========================================
+       DECORATIVE ELEMENTS
+    ========================================= */
+
+    .mini-tag {
+      position: absolute;
+      z-index: 2;
+      top: 4%;
+      right: 2%;
+
+      width: 90px;
+      height: 90px;
+
+      border: 1px solid rgba(220,190,122,.65);
+      border-radius: 50%;
+
+      display: grid;
+      place-content: center;
+      text-align: center;
+
+      color: #e7d5a9;
+      transform: rotate(10deg);
+
+      font-size: 7px;
+      line-height: 1.5;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .mini-tag b {
+      display: block;
+      font: italic 22px var(--serif, Georgia, serif);
+      letter-spacing: 0;
+      color: #e2bd70;
+    }
+
+    .stage-caption {
+      position: absolute;
+      left: 4%;
+      bottom: 0;
+
+      color: #d5d9ca;
+      font-size: 8px;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================
+       TABLET RESPONSIVE
+    ========================================= */
+
+    @media(max-width:850px) {
+
+      .hero.packaging-hero {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 64px 7% 45px;
+      }
+
+      .packaging-hero .hero-content {
+        max-width: 650px;
+      }
+
+      .packaging-stage {
+        min-height: 360px;
+        max-width: 650px;
+        margin: 0 auto;
+      }
+
+      .jar {
+        height: 145px;
+      }
+
+      .jar.pickle {
+        height: 158px;
+      }
+
+      .jar.jam {
+        height: 136px;
+      }
+
+      .bottle {
+        height: 205px;
+      }
+
+      .pouch {
+        height: 168px;
+      }
+    }
+
+
+    /* =========================================
+       MOBILE RESPONSIVE
+    ========================================= */
+
+    @media(max-width:520px) {
+
+      .hero.packaging-hero {
+        padding: 55px 6% 35px;
+      }
+
+      .packaging-hero h1 {
+        font-size: clamp(43px, 12vw, 58px);
+      }
+
+      .packaging-hero .hero-description {
+        font-size: 12px;
+      }
+
+      .packaging-stage {
+        min-height: 280px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .jar {
+        width: 68px;
+        height: 125px;
+        margin-left: -5px;
+        margin-right: -5px;
+      }
+
+      .jar.pickle {
+        height: 139px;
+      }
+
+      .jar.jam {
+        height: 115px;
+      }
+
+      .bottle {
+        width: 62px;
+        height: 175px;
+      }
+
+      .pouch {
+        width: 77px;
+        height: 142px;
+      }
+
+      .package-label b {
+        font-size: 6px;
+      }
+
+      .package-label small {
+        font-size: 5px;
+      }
+
+      .mini-tag {
+        width: 66px;
+        height: 66px;
+        font-size: 5px;
+      }
+
+      .mini-tag b {
+        font-size: 17px;
+      }
+
+      .display-plinth {
+        height: 60px;
+      }
+
+      .packaging-hero .hero-note {
+        margin-top: 32px;
+      }
+    }
+
+
+    /* =========================================
+       PACKAGE FLOAT ANIMATION
+    ========================================= */
+
+    @media(prefers-reduced-motion:no-preference) {
+
+      .package {
+        animation: packageFloat 5.5s ease-in-out infinite;
+      }
+
+      .package:nth-of-type(2) {
+        animation-delay: -1.2s;
+      }
+
+      .package:nth-of-type(3) {
+        animation-delay: -2.1s;
+      }
+
+      .package:nth-of-type(4) {
+        animation-delay: -3s;
+      }
+
+      @keyframes packageFloat {
+
+        0%,100% {
+          translate: 0 0;
+        }
+
+        50% {
+          translate: 0 -7px;
+        }
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-  <!-- ANNOUNCEMENT BAR -->
+  <!-- =====================================
+       ANNOUNCEMENT BAR
+  ====================================== -->
+
   <div class="announcement">
-    <p>Food manufacturing <span>·</span> Processing <span>·</span> Trading</p>
+
+    <p>Food manufacturing · Processing · Trading</p>
+
     <a href="business-enquiry.html">
       Wholesale & distribution enquiries
-      <span aria-hidden="true">↗</span>
+      <span aria-hidden="true">→</span>
     </a>
+
   </div>
 
 
-  <!-- HEADER -->
+  <!-- =====================================
+       HEADER / NAVIGATION
+  ====================================== -->
+
   <header class="site-header" id="top">
+
     <div class="container nav-wrap">
 
       <a class="brand" href="index.html" aria-label="Ride Nippy home">
-        <img src="assets/ride-nippy-logo.svg" alt="Ride Nippy Private Limited">
+
+        <span class="brand-mark" aria-hidden="true">RN</span>
+
+        <span class="brand-copy">
+          <strong>RIDE NIPPY</strong>
+          <small>PRIVATE LIMITED</small>
+        </span>
+
       </a>
 
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
+
       <nav class="main-nav" aria-label="Main navigation">
+
         <a class="active" href="index.html">Home</a>
+
         <a href="about.html">About Us</a>
+
         <a href="products.html">Our Products</a>
-        <a href="product-details.html">Product Details</a>
+
         <a href="business-enquiry.html">Bulk Orders</a>
+
         <a href="contact.html">Contact</a>
+
         <a class="nav-cta" href="#enquiry">
-          Enquire Now <span aria-hidden="true">↗</span>
+          Enquire Now
+          <span aria-hidden="true">↗</span>
         </a>
+
       </nav>
 
     </div>
+
   </header>
 
 
   <main>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
 
-      <div class="hero-photo" aria-hidden="true"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-grain" aria-hidden="true"></div>
+    <!-- =====================================
+         HERO SECTION
+         CSS / HTML PACKAGING SHOWCASE
+    ====================================== -->
 
-      <div class="hero-orbit orbit-one" aria-hidden="true"></div>
-      <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+    <section
+      class="hero packaging-hero"
+      aria-labelledby="hero-title"
+    >
 
-      <div class="hero-floating floating-spice" aria-hidden="true">
-        <span class="spice-dot"></span>
-        <span class="spice-dot"></span>
-        <span class="spice-dot"></span>
-      </div>
+      <!-- LEFT SIDE: TEXT -->
 
-      <div class="hero-floating floating-leaf" aria-hidden="true">✳</div>
+      <div class="container hero-content">
 
-      <div class="container hero-inner">
+        <p class="eyebrow light">
+          A world of food, thoughtfully packaged
+        </p>
 
-        <div class="hero-copy">
+        <h1 id="hero-title">
+          Good food.<br>
+          <em>Thoughtfully packaged.</em>
+        </h1>
 
-          <p class="eyebrow light hero-kicker">
-            <span class="eyebrow-line"></span>
-            A world of food, brought together
-          </p>
+        <p class="hero-description">
+          Everyday food essentials across seven categories,
+          presented in practical retail-ready formats for
+          modern kitchens and businesses.
+        </p>
 
-          <h1>
-            Good food has<br>
-            many <em>expressions.</em>
-          </h1>
 
-          <p class="hero-description">
-            Discover a diverse range of everyday food products from Ride
-            Nippy Private Limited — bringing multiple categories together
-            for businesses, retailers and consumers.
-          </p>
+        <div class="hero-actions">
 
-          <div class="hero-actions">
-            <a class="button button-gold" href="products.html">
-              Explore our products <span aria-hidden="true">→</span>
-            </a>
+          <a class="button button-gold" href="products.html">
+            Explore our products
+            <span aria-hidden="true">→</span>
+          </a>
 
-            <a class="text-link light-link" href="business-enquiry.html">
-              Discuss a bulk requirement
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-
-          <div class="hero-bottom-note">
-            <span class="scroll-mark"><i></i></span>
-            <span>Scroll to explore</span>
-          </div>
+          <a
+            class="text-link light-link"
+            href="business-enquiry.html"
+          >
+            Discuss a bulk requirement
+            <span aria-hidden="true">↗</span>
+          </a>
 
         </div>
 
-        <div class="hero-side-note">
-          <span class="side-note-rule"></span>
-          <span>Manufacturing · Processing · Trading</span>
-        </div>
 
-        <div class="hero-stamp" aria-hidden="true">
-          <span class="stamp-top">RIDE NIPPY</span>
-          <span class="stamp-center">7</span>
-          <span class="stamp-bottom">FOOD CATEGORIES</span>
+        <div class="hero-note">
+
+          <span class="note-line"></span>
+
+          <span>
+            Pickles · Vinegar · Jam · Oils · Nuts · Spices · Pulses
+          </span>
+
         </div>
 
       </div>
+
+
+      <!-- RIGHT SIDE: PACKAGING DISPLAY -->
+
+      <div
+        class="packaging-stage"
+        role="img"
+        aria-label="Stylised display of retail food packaging including pickle and jam jars, an edible oil bottle, and resealable pouches for pantry staples"
+      >
+
+        <div class="mini-tag">
+          Everyday
+          <b>7</b>
+          food categories
+        </div>
+
+
+        <!-- LENTILS AND PULSES POUCH -->
+
+        <div class="package pouch pulses">
+
+          <div class="package-label">
+            <b>RIDE NIPPY</b>
+            <small>LENTILS &amp; PULSES</small>
+          </div>
+
+        </div>
+
+
+        <!-- PICKLE JAR -->
+
+        <div class="package jar pickle">
+
+          <div class="package-label">
+            <b>RIDE NIPPY</b>
+            <small>TRADITIONAL PICKLES</small>
+          </div>
+
+        </div>
+
+
+        <!-- EDIBLE OIL BOTTLE -->
+
+        <div class="package bottle">
+
+          <div class="package-label">
+            <b>RIDE NIPPY</b>
+            <small>EDIBLE OIL</small>
+          </div>
+
+        </div>
+
+
+        <!-- FRUIT JAM JAR -->
+
+        <div class="package jar jam">
+
+          <div class="package-label">
+            <b>RIDE NIPPY</b>
+            <small>FRUIT JAM</small>
+          </div>
+
+        </div>
+
+
+        <!-- SPICES POUCH -->
+
+        <div class="package pouch">
+
+          <div class="package-label">
+            <b>RIDE NIPPY</b>
+            <small>WHOLE SPICES</small>
+          </div>
+
+        </div>
+
+
+        <!-- DISPLAY PLATFORM -->
+
+        <div class="display-plinth" aria-hidden="true"></div>
+
+
+        <span class="stage-caption">
+          A considered range for everyday kitchens
+        </span>
+
+      </div>
+
     </section>
 
 
-    <!-- INTRODUCTION -->
+    <!-- =====================================
+         COMPANY INTRODUCTION
+    ====================================== -->
+
     <section class="intro section-pad">
 
       <div class="container intro-grid">
 
-        <div class="intro-heading reveal">
-          <p class="eyebrow">Welcome to Ride Nippy</p>
+        <div>
+
+          <p class="eyebrow">
+            Welcome to Ride Nippy
+          </p>
 
           <h2>
             One company.<br>
             <em>Many food essentials.</em>
           </h2>
+
         </div>
 
-        <div class="intro-copy reveal">
 
-          <p class="intro-lead">
-            A considered range for everyday kitchens and evolving businesses.
+        <div class="intro-copy">
+
+          <p>
+            Ride Nippy Private Limited is an Indian food
+            manufacturing, processing and trading company
+            with a portfolio spanning everyday food categories.
           </p>
 
           <p>
-            Ride Nippy Private Limited is an Indian food manufacturing,
-            processing and trading company with a portfolio spanning
-            everyday food categories.
-          </p>
-
-          <p>
-            We aim to make it easier for wholesale buyers, retailers,
-            distributors and individual customers to discover our product
-            range and connect with our team.
+            We aim to make it easier for wholesale buyers,
+            retailers, distributors and individual customers
+            to discover our product range and connect with our team.
           </p>
 
           <a class="text-link" href="about.html">
-            Get to know our company <span aria-hidden="true">→</span>
+            Get to know our company
+            <span aria-hidden="true">→</span>
           </a>
 
         </div>
 
       </div>
 
-      <div class="intro-decoration" aria-hidden="true">R&nbsp;N</div>
-
     </section>
 
 
-    <!-- PRODUCT CATEGORIES -->
-    <section class="categories section-pad" id="categories">
+    <!-- =====================================
+         PRODUCT CATEGORIES
+    ====================================== -->
+
+    <section class="categories section-pad">
 
       <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-heading">
 
           <div>
-            <p class="eyebrow">Explore the range</p>
-            <h2>Our product <em>categories</em></h2>
+
+            <p class="eyebrow">
+              Explore the range
+            </p>
+
+            <h2>
+              Our product <em>categories</em>
+            </h2>
+
           </div>
 
           <a class="text-link desktop-link" href="products.html">
-            View all products <span aria-hidden="true">→</span>
+            View all products
+            <span aria-hidden="true">→</span>
           </a>
 
         </div>
@@ -201,110 +931,174 @@
 
         <div class="category-grid">
 
-          <!-- PICKLES -->
-          <a class="category-card category-large reveal" href="products.html#pickles">
+
+          <!-- 01 PICKLES -->
+
+          <a
+            class="category-card category-large"
+            href="products.html#pickles"
+          >
 
             <img
               src="https://images.unsplash.com/photo-1599909533730-f9d4c7f8f2f5?auto=format&fit=crop&w=1200&q=85"
               alt="Colourful pickled vegetables in jars"
-              loading="lazy">
+              loading="lazy"
+            >
 
-            <span class="category-number">01 / 07</span>
+            <span class="category-number">01</span>
 
             <span class="category-label">
               <strong>Pickles</strong>
               <small>Explore category ↗</small>
             </span>
 
-            <span class="card-arrow" aria-hidden="true">↗</span>
-
           </a>
 
 
-          <!-- VINEGAR -->
-          <a class="category-card reveal" href="products.html#vinegar">
+          <!-- 02 VINEGAR -->
+
+          <a
+            class="category-card"
+            href="products.html#vinegar"
+          >
 
             <img
               src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=85"
-              alt="Pantry ingredients and oil bottle"
-              loading="lazy">
+              alt="Pantry ingredients and cooking essentials"
+              loading="lazy"
+            >
 
-            <span class="category-number">02 / 07</span>
+            <span class="category-number">02</span>
 
             <span class="category-label">
               <strong>Vinegar</strong>
               <small>Explore category ↗</small>
             </span>
 
-            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+
+
+          <!-- 03 FRUIT JAM -->
+
+          <a
+            class="category-card"
+            href="products.html#fruit-jam"
+          >
+
+            <img
+              src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=85"
+              alt="Fruit and jam ingredients"
+              loading="lazy"
+            >
+
+            <span class="category-number">03</span>
+
+            <span class="category-label">
+              <strong>Fruit Jam</strong>
+              <small>Explore category ↗</small>
+            </span>
 
           </a>
 
 
-          <!-- EDIBLE OILS -->
-          <a class="category-card reveal" href="products.html#oils">
+          <!-- 04 EDIBLE OILS -->
+
+          <a
+            class="category-card"
+            href="products.html#edible-oils"
+          >
 
             <img
               src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=85"
               alt="Edible oil in a glass bottle"
-              loading="lazy">
+              loading="lazy"
+            >
 
-            <span class="category-number">04 / 07</span>
+            <span class="category-number">04</span>
 
             <span class="category-label">
               <strong>Edible Oils</strong>
               <small>Explore category ↗</small>
             </span>
 
-            <span class="card-arrow" aria-hidden="true">↗</span>
-
           </a>
 
 
-          <!-- NUTS -->
-          <a class="category-card reveal" href="products.html#nuts">
+          <!-- 05 NUTS -->
+
+          <a
+            class="category-card"
+            href="products.html#nuts"
+          >
 
             <img
               src="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=900&q=85"
               alt="Assorted nuts"
-              loading="lazy">
+              loading="lazy"
+            >
 
-            <span class="category-number">05 / 07</span>
+            <span class="category-number">05</span>
 
             <span class="category-label">
               <strong>Nuts</strong>
               <small>Explore category ↗</small>
             </span>
 
-            <span class="card-arrow" aria-hidden="true">↗</span>
-
           </a>
 
 
-          <!-- SPICES -->
-          <a class="category-card reveal" href="products.html#spices">
+          <!-- 06 SPICES -->
+
+          <a
+            class="category-card"
+            href="products.html#spices"
+          >
 
             <img
               src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=85"
               alt="Assorted Indian spices"
-              loading="lazy">
+              loading="lazy"
+            >
 
-            <span class="category-number">06 / 07</span>
+            <span class="category-number">06</span>
 
             <span class="category-label">
               <strong>Spices</strong>
               <small>Explore category ↗</small>
             </span>
 
-            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+
+
+          <!-- 07 LENTILS AND PULSES -->
+
+          <a
+            class="category-card category-wide"
+            href="products.html#lentils-pulses"
+          >
+
+            <img
+              src="https://images.unsplash.com/photo-1515543904379-3d757?auto=format&fit=crop&w=1200&q=85"
+              alt="Assorted lentils and pulses"
+              loading="lazy"
+            >
+
+            <span class="category-number">07</span>
+
+            <span class="category-label">
+              <strong>Lentils &amp; Pulses</strong>
+              <small>Explore category ↗</small>
+            </span>
 
           </a>
+
 
         </div>
 
 
         <a class="text-link mobile-link" href="products.html">
-          View all products <span aria-hidden="true">→</span>
+          View all products
+          <span aria-hidden="true">→</span>
         </a>
 
       </div>
@@ -312,41 +1106,44 @@
     </section>
 
 
-    <!-- BUSINESS SECTION -->
-    <section class="business-band">
+    <!-- =====================================
+         BUSINESS ENQUIRY BANNER
+    ====================================== -->
 
-      <div class="business-band-shape" aria-hidden="true"></div>
+    <section class="business-band">
 
       <div class="container business-band-inner">
 
-        <div class="business-band-heading reveal">
+        <div>
 
-          <p class="eyebrow light">For business buyers</p>
+          <p class="eyebrow light">
+            For business buyers
+          </p>
 
           <h2>
-            Good partnerships<br>
-            start with <em>a conversation.</em>
+            Looking for a dependable<br>
+            <em>food products partner?</em>
           </h2>
 
         </div>
 
-        <div class="business-band-copy reveal">
+
+        <div class="business-band-copy">
 
           <p>
-            Tell us what products you need, the quantities you have in mind
-            and where you operate. Our team can follow up about your
-            requirement.
+            Tell us what products you need, the quantities
+            you have in mind and where you operate. Our team
+            can follow up about your requirement.
           </p>
 
-          <a class="button button-light" href="business-enquiry.html">
+          <a
+            class="button button-light"
+            href="business-enquiry.html"
+          >
             Make a business enquiry
             <span aria-hidden="true">↗</span>
           </a>
 
-        </div>
-
-        <div class="business-orbit" aria-hidden="true">
-          <span></span><span></span><span></span>
         </div>
 
       </div>
@@ -354,14 +1151,20 @@
     </section>
 
 
-    <!-- WHY RIDE NIPPY -->
+    <!-- =====================================
+         WHY RIDE NIPPY
+    ====================================== -->
+
     <section class="why section-pad">
 
       <div class="container why-grid">
 
-        <div class="why-heading reveal">
 
-          <p class="eyebrow">The Ride Nippy approach</p>
+        <div class="why-heading">
+
+          <p class="eyebrow">
+            The Ride Nippy approach
+          </p>
 
           <h2>
             Built around<br>
@@ -369,8 +1172,9 @@
           </h2>
 
           <p>
-            We bring multiple food categories together under one company,
-            with a focus on clear communication and business relationships.
+            We bring multiple food categories together
+            under one company, with a focus on clear
+            communication and business relationships.
           </p>
 
         </div>
@@ -378,55 +1182,67 @@
 
         <div class="value-list">
 
-          <article class="value-item reveal">
+
+          <article class="value-item">
 
             <span>01</span>
 
             <div>
-              <h3>Multiple product categories</h3>
-              <p>
-                Explore a portfolio covering pickles, vinegar,
-                edible oils, nuts, spices.
-              </p>
-            </div>
 
-            <b aria-hidden="true">↗</b>
+              <h3>
+                Multiple product categories
+              </h3>
+
+              <p>
+                Explore a portfolio covering pickles,
+                vinegar, fruit jam, edible oils, nuts,
+                spices, lentils and pulses.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <article class="value-item reveal">
+          <article class="value-item">
 
             <span>02</span>
 
             <div>
-              <h3>Business enquiry support</h3>
-              <p>
-                Share wholesale, retail, distribution or dealership
-                requirements with our team.
-              </p>
-            </div>
 
-            <b aria-hidden="true">↗</b>
+              <h3>
+                Business enquiry support
+              </h3>
+
+              <p>
+                Share wholesale, retail, distribution
+                or dealership requirements with our team.
+              </p>
+
+            </div>
 
           </article>
 
 
-          <article class="value-item reveal">
+          <article class="value-item">
 
             <span>03</span>
 
             <div>
-              <h3>Clear product information</h3>
+
+              <h3>
+                Clear product information
+              </h3>
+
               <p>
-                Product pages are designed to help buyers review available
-                details and ask specific questions.
+                Product pages are designed to help buyers
+                review available details and ask specific questions.
               </p>
+
             </div>
 
-            <b aria-hidden="true">↗</b>
-
           </article>
+
 
         </div>
 
@@ -435,14 +1251,19 @@
     </section>
 
 
-    <!-- ENQUIRY SECTION -->
+    <!-- =====================================
+         FINAL ENQUIRY SECTION
+    ====================================== -->
+
     <section class="enquiry-section section-pad" id="enquiry">
 
-      <div class="container enquiry-card reveal">
+      <div class="container enquiry-card">
 
         <div>
 
-          <p class="eyebrow light">Start a conversation</p>
+          <p class="eyebrow light">
+            Start a conversation
+          </p>
 
           <h2>
             Have a product or<br>
@@ -450,7 +1271,8 @@
           </h2>
 
           <p>
-            Send us your requirement and choose how you would like to connect.
+            Send us your requirement and choose how
+            you would like to connect.
           </p>
 
         </div>
@@ -459,16 +1281,16 @@
         <div class="enquiry-actions">
 
           <a class="button button-gold" href="business-enquiry.html">
-            Business enquiry <span aria-hidden="true">→</span>
+            Business enquiry
+            <span aria-hidden="true">→</span>
           </a>
 
           <a class="text-link light-link" href="contact.html">
-            Contact our team <span aria-hidden="true">↗</span>
+            Contact our team
+            <span aria-hidden="true">↗</span>
           </a>
 
         </div>
-
-        <span class="enquiry-decoration" aria-hidden="true">RN</span>
 
       </div>
 
@@ -477,50 +1299,78 @@
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =====================================
+       FOOTER
+  ====================================== -->
+
   <footer class="site-footer">
 
     <div class="container footer-main">
 
+
+      <!-- FOOTER BRAND -->
+
       <div class="footer-brand">
 
         <a class="brand brand-light" href="index.html">
-          <img src="assets/ride-nippy-logo.svg" alt="Ride Nippy Private Limited">
+
+          <span class="brand-mark">RN</span>
+
+          <span class="brand-copy">
+            <strong>RIDE NIPPY</strong>
+            <small>PRIVATE LIMITED</small>
+          </span>
+
         </a>
 
-        <p>Food manufacturing · Processing · Trading</p>
+        <p>
+          Food manufacturing · Processing · Trading
+        </p>
 
       </div>
 
+
+      <!-- EXPLORE LINKS -->
 
       <div class="footer-column">
 
         <h4>Explore</h4>
 
         <a href="about.html">About Us</a>
+
         <a href="products.html">Our Products</a>
-        <a href="product-details.html">Product Details</a>
+
         <a href="business-enquiry.html">Bulk Orders</a>
 
       </div>
 
+
+      <!-- CONNECT LINKS -->
 
       <div class="footer-column">
 
         <h4>Connect</h4>
 
         <a href="contact.html">Contact Us</a>
+
         <a href="business-enquiry.html">Distributor Enquiry</a>
+
         <a href="business-enquiry.html">Retailer Enquiry</a>
 
       </div>
 
 
+      <!-- COMPANY DETAILS -->
+
       <div class="footer-column footer-contact">
 
         <h4>Company details</h4>
 
-        <p>Contact information will be added here.</p>
+        <p>
+          Official phone, email and office address
+          will be published after verification.
+        </p>
+
         <p>India</p>
 
       </div>
@@ -528,14 +1378,18 @@
     </div>
 
 
+    <!-- COPYRIGHT -->
+
     <div class="container footer-bottom">
 
       <span>
-        © <span id="year"></span> Ride Nippy Private Limited.
-        All rights reserved.
+        © <span id="year"></span>
+        Ride Nippy Private Limited. All rights reserved.
       </span>
 
-      <a href="#top">Back to top ↑</a>
+      <a href="#top">
+        Back to top ↑
+      </a>
 
     </div>
 
