@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore Ride Nippy Private Limited's food product categories, including pickles, vinegar, fruit jam, edible oils, nuts, spices, lentils and pulses.">
+  <meta name="description" content="Explore Ride Nippy Private Limited's food product categories, including pickles, vinegar, edible oils, nuts, spices.">
   <meta name="theme-color" content="#183d2b">
   <title>Ride Nippy Private Limited | Food Products & Bulk Enquiries</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,20 +11,66 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="pages.css">
   <style>
-    /* Ride Nippy brand logo */
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
+   /* BRAND LOGO */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+/* New emblem */
+.brand-logo {
+    width: 48px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Existing wordmark */
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 145px;
+}
+
+.brand-copy strong {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.8px;
+    color: #183D2B;
+}
+
+.brand-copy small {
+    display: block;
+    margin-top: 5px;
+    padding-top: 4px;
+    border-top: 1px solid #D8B66A;
+    font-size: 6px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: #78945A;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
     .brand-logo {
-      display: block;
-      width: auto;
-      height: 54px;
-      max-width: 46px;
-      object-fit: contain;
-      flex: 0 0 auto;
+        width: 38px;
+        height: 52px;
     }
+
+    .brand-copy strong {
+        font-size: 16px;
+    }
+
+    .brand-copy {
+        min-width: 125px;
+    }
+}
     .footer-brand .brand-logo {
       height: 58px;
       max-width: 48px;
