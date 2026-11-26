@@ -295,3 +295,63 @@ h1 em, h2 em { color: var(--olive); font-weight: 500; }
   .footer-brand .brand img { width: 170px; }
   .footer-bottom { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 18px; font-size: 8px; }
 }
+/* BRAND LOGO */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+/* New emblem */
+.brand-logo {
+    width: 48px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Existing wordmark */
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 145px;
+}
+
+.brand-copy strong {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.8px;
+    color: #183D2B;
+}
+
+.brand-copy small {
+    display: block;
+    margin-top: 5px;
+    padding-top: 4px;
+    border-top: 1px solid #D8B66A;
+    font-size: 6px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: #78945A;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .brand-logo {
+        width: 38px;
+        height: 52px;
+    }
+
+    .brand-copy strong {
+        font-size: 16px;
+    }
+
+    .brand-copy {
+        min-width: 125px;
+    }
+}
