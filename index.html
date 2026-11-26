@@ -21,9 +21,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="pages.css">
 
-    <!-- LOGO STYLING -->
+    <!-- LOGO + PRODUCT ANIMATION STYLING -->
     <style>
+
         /* Compact header and footer brand lockup */
+
         .site-header .brand,
         .footer-brand .brand {
             display: inline-flex;
@@ -33,10 +35,6 @@
             text-decoration: none;
         }
 
-        /*
-          Use a more specific selector than .brand img so the generic
-          image width in the main stylesheet cannot enlarge the emblem.
-        */
         .site-header .brand img.brand-logo,
         .footer-brand .brand img.brand-logo {
             display: block;
@@ -82,6 +80,7 @@
         }
 
         /* Footer version */
+
         .footer-brand .brand-copy strong {
             color: #ffffff;
         }
@@ -91,7 +90,9 @@
         }
 
         /* Tablet */
+
         @media (max-width: 900px) {
+
             .site-header .brand img.brand-logo,
             .footer-brand .brand img.brand-logo {
                 width: 43px;
@@ -108,10 +109,13 @@
             .brand-copy strong {
                 font-size: 17px;
             }
+
         }
 
         /* Mobile */
+
         @media (max-width: 600px) {
+
             .site-header .brand img.brand-logo,
             .footer-brand .brand img.brand-logo {
                 width: 38px;
@@ -133,7 +137,284 @@
                 font-size: 5px;
                 letter-spacing: .7px;
             }
+
         }
+
+
+        /* =====================================================
+           RIDE NIPPY PRODUCT MOTION
+           Floating product gallery + 3D category cards
+        ====================================================== */
+
+        .hero {
+            perspective: 1400px;
+            overflow: hidden;
+        }
+
+        /* Floating product showcase */
+
+        .hero-product-stage {
+            position: absolute;
+            z-index: 5;
+            top: 50%;
+            right: clamp(3%, 7vw, 11%);
+            width: min(43vw, 560px);
+            height: min(70vh, 560px);
+            min-height: 390px;
+            transform: translateY(-48%);
+            pointer-events: none;
+            perspective: 1200px;
+        }
+
+        .hero-product-stage::before {
+            content: "";
+            position: absolute;
+            inset: 13%;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 50%;
+            transform: rotateX(68deg) rotateZ(-18deg);
+            box-shadow:
+                0 0 65px rgba(255,255,255,.08),
+                inset 0 0 45px rgba(255,255,255,.05);
+        }
+
+        /* Individual product cards */
+
+        .rn-product-float {
+            position: absolute;
+            width: clamp(112px, 13vw, 172px);
+            aspect-ratio: .82;
+            padding: 7px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.58);
+            border-radius: 17px;
+            background: rgba(255,255,255,.14);
+            box-shadow: 0 24px 55px rgba(0,0,0,.28);
+            backdrop-filter: blur(8px);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .rn-product-float img {
+            display: block;
+            width: 100%;
+            height: calc(100% - 28px);
+            object-fit: cover;
+            border-radius: 11px;
+        }
+
+        .rn-product-float span {
+            display: block;
+            padding: 8px 4px 2px;
+            color: #fff;
+            font: 600 10px/1.2 'DM Sans', Arial, sans-serif;
+            letter-spacing: 1.3px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* Product card positions */
+
+        .rn-float-pickles {
+            left: 7%;
+            top: 12%;
+            z-index: 2;
+        }
+
+        .rn-float-vinegar {
+            right: 7%;
+            top: 4%;
+            z-index: 3;
+        }
+
+        .rn-float-oils {
+            left: 35%;
+            top: 30%;
+            z-index: 5;
+            width: clamp(130px, 15vw, 195px);
+        }
+
+        .rn-float-nuts {
+            left: 3%;
+            bottom: 8%;
+            z-index: 4;
+        }
+
+        .rn-float-spices {
+            right: 4%;
+            bottom: 5%;
+            z-index: 2;
+        }
+
+        /* Floating animation */
+
+        .hero-product-stage .rn-product-float {
+            animation: rnFloat 6.5s ease-in-out infinite;
+        }
+
+        .hero-product-stage .rn-float-vinegar {
+            animation-delay: -1.2s;
+        }
+
+        .hero-product-stage .rn-float-oils {
+            animation-delay: -2.4s;
+        }
+
+        .hero-product-stage .rn-float-nuts {
+            animation-delay: -3.6s;
+        }
+
+        .hero-product-stage .rn-float-spices {
+            animation-delay: -4.8s;
+        }
+
+        @keyframes rnFloat {
+
+            0%, 100% {
+                translate: 0 0;
+            }
+
+            50% {
+                translate: 0 -17px;
+            }
+
+        }
+
+        /* 3D category cards */
+
+        .category-grid {
+            perspective: 1400px;
+        }
+
+        .category-card {
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .category-card img {
+            transform: translateZ(0) scale(1.015);
+            transition:
+                transform .7s cubic-bezier(.2,.7,.2,1),
+                filter .5s ease;
+        }
+
+        .category-card:hover img {
+            transform: translateZ(22px) scale(1.08);
+            filter: saturate(1.08);
+        }
+
+        .category-label,
+        .category-number,
+        .card-arrow {
+            transform: translateZ(24px);
+        }
+
+        .category-card.rn-tilt-active {
+            box-shadow: 0 28px 55px rgba(18,38,27,.22);
+        }
+
+        /* Tablet adjustments */
+
+        @media (max-width: 900px) {
+
+            .hero-product-stage {
+                right: 1%;
+                width: 48vw;
+                opacity: .86;
+            }
+
+            .rn-product-float {
+                width: clamp(92px, 15vw, 132px);
+            }
+
+            .rn-float-oils {
+                width: clamp(108px, 17vw, 148px);
+            }
+
+        }
+
+        /* Mobile adjustments */
+
+        @media (max-width: 680px) {
+
+            .hero-product-stage {
+                top: auto;
+                right: 2%;
+                bottom: 2%;
+                width: 100%;
+                height: 210px;
+                min-height: 0;
+                opacity: .58;
+                transform: none;
+            }
+
+            .hero-product-stage::before {
+                inset: 10% 22%;
+            }
+
+            .rn-product-float {
+                width: 82px;
+                padding: 4px;
+                border-radius: 11px;
+            }
+
+            .rn-product-float img {
+                height: calc(100% - 23px);
+                border-radius: 7px;
+            }
+
+            .rn-product-float span {
+                padding-top: 6px;
+                font-size: 7px;
+                letter-spacing: .8px;
+            }
+
+            .rn-float-pickles {
+                left: 8%;
+                top: 8%;
+            }
+
+            .rn-float-vinegar {
+                right: 8%;
+                top: 0;
+            }
+
+            .rn-float-oils {
+                left: 39%;
+                top: 23%;
+                width: 96px;
+            }
+
+            .rn-float-nuts {
+                left: 17%;
+                bottom: 0;
+            }
+
+            .rn-float-spices {
+                right: 17%;
+                bottom: 0;
+            }
+
+        }
+
+        /* Accessibility */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .hero-product-stage .rn-product-float {
+                animation: none !important;
+            }
+
+            .category-card,
+            .category-card img {
+                transition: none !important;
+            }
+
+        }
+
     </style>
 
     <!-- GSAP Animation Libraries -->
@@ -355,12 +636,63 @@
 
                 </div>
 
+
+                <!-- FLOATING PRODUCT SHOWCASE -->
+
+                <div class="hero-product-stage" aria-label="Ride Nippy product categories">
+
+                    <div class="rn-product-float rn-float-pickles">
+                        <img
+                            src="https://images.unsplash.com/photo-1599909533730-f9d4c7f8f2f5?auto=format&fit=crop&w=500&q=85"
+                            alt=""
+                            loading="eager"
+                        >
+                        <span>Pickles</span>
+                    </div>
+
+                    <div class="rn-product-float rn-float-vinegar">
+                        <img
+                            src="https://images.unsplash.com/photo-1543255006-d6395b6f1171?auto=format&fit=crop&w=500&q=85"
+                            alt=""
+                            loading="eager"
+                        >
+                        <span>Vinegar</span>
+                    </div>
+
+                    <div class="rn-product-float rn-float-oils">
+                        <img
+                            src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=85"
+                            alt=""
+                            loading="eager"
+                        >
+                        <span>Edible Oils</span>
+                    </div>
+
+                    <div class="rn-product-float rn-float-nuts">
+                        <img
+                            src="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=500&q=85"
+                            alt=""
+                            loading="eager"
+                        >
+                        <span>Nuts</span>
+                    </div>
+
+                    <div class="rn-product-float rn-float-spices">
+                        <img
+                            src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=85"
+                            alt=""
+                            loading="eager"
+                        >
+                        <span>Spices</span>
+                    </div>
+
+                </div>
+
             </div>
 
         </section>
 
-
-        <!-- INTRODUCTION -->
+                <!-- INTRODUCTION -->
 
         <section class="intro section-pad">
 
@@ -798,8 +1130,7 @@
 
     </main>
 
-
-    <!-- FOOTER -->
+        <!-- FOOTER -->
 
     <footer class="site-footer">
 
@@ -900,6 +1231,145 @@
         </div>
 
     </footer>
+
+
+    <!-- PRODUCT ANIMATION SCRIPT -->
+
+    <script>
+
+        window.addEventListener('load', function () {
+
+            const reduceMotion = window.matchMedia(
+                '(prefers-reduced-motion: reduce)'
+            ).matches;
+
+            const stage = document.querySelector(
+                '.hero-product-stage'
+            );
+
+            const floats = document.querySelectorAll(
+                '.rn-product-float'
+            );
+
+            const cards = document.querySelectorAll(
+                '.category-card'
+            );
+
+
+            /* ---------------------------------
+               FLOATING PRODUCT ENTRANCE
+            --------------------------------- */
+
+            if (!reduceMotion && window.gsap && stage) {
+
+                gsap.fromTo(
+                    floats,
+
+                    {
+                        autoAlpha: 0,
+                        y: 55,
+                        rotateX: 18,
+                        rotateY: -18,
+                        scale: .78
+                    },
+
+                    {
+                        autoAlpha: 1,
+                        y: 0,
+                        rotateX: 0,
+                        rotateY: 0,
+                        scale: 1,
+                        duration: 1.15,
+                        stagger: .13,
+                        ease: 'power3.out',
+                        delay: .25
+                    }
+
+                );
+
+
+                /* ---------------------------------
+                   SUBTLE 3D STAGE MOVEMENT
+                --------------------------------- */
+
+                gsap.to(stage, {
+
+                    rotateY: 5,
+                    rotateX: -2,
+                    duration: 5,
+                    yoyo: true,
+                    repeat: -1,
+                    ease: 'sine.inOut'
+
+                });
+
+            }
+
+
+            /* ---------------------------------
+               INTERACTIVE 3D CATEGORY CARDS
+            --------------------------------- */
+
+            if (!reduceMotion) {
+
+                cards.forEach(function (card) {
+
+
+                    card.addEventListener(
+                        'pointermove',
+                        function (event) {
+
+                            if (event.pointerType === 'touch') {
+                                return;
+                            }
+
+                            const rect = card.getBoundingClientRect();
+
+                            const x =
+                                (event.clientX - rect.left) /
+                                rect.width;
+
+                            const y =
+                                (event.clientY - rect.top) /
+                                rect.height;
+
+
+                            const rotateY = (x - .5) * 10;
+
+                            const rotateX = (.5 - y) * 8;
+
+
+                            card.classList.add('rn-tilt-active');
+
+
+                            card.style.transform =
+                                'perspective(900px) ' +
+                                'rotateX(' + rotateX + 'deg) ' +
+                                'rotateY(' + rotateY + 'deg) ' +
+                                'translateY(-5px)';
+
+                        }
+                    );
+
+
+                    card.addEventListener(
+                        'pointerleave',
+                        function () {
+
+                            card.classList.remove('rn-tilt-active');
+
+                            card.style.transform = '';
+
+                        }
+                    );
+
+                });
+
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
